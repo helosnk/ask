@@ -171,42 +171,42 @@ body {
   </div>
 
   <script>
-  $(document).ready(function () {
-    var magazine = $('#magazine');
+    $(document).ready(function () {
+      var magazine = $('#magazine');
 
-    magazine.turn({
-      display: 'single',
-      width: '100vw',
-      height: '100vh'
-    });
-
-    magazine.bind('turned', function (event, page, view) {
-      handlePageContent(page);
-    });
-
-    function hideAndShow(showPage, hidePages) {
-      // Adiciona hidden para que as outras não apareçam
-      hidePages.forEach(number => {
-        $(`.page${number}`).addClass('hidden');
+      magazine.turn({
+        display: 'single',
+        width: '100vw',
+        height: '100vh'
       });
 
-      // Remove o hidden da página para fazê-la aparecer:
-      $(`.page${showPage}`).removeClass('hidden');
-    }
+      magazine.bind('turned', function (event, page, view) {
+        handlePageContent(page);
+      });
 
-    function handlePageContent(page) {
-      $('.turn-page p').addClass('hidden');
+      function hideAndShow(showPage, hidePages) {
+        // Adiciona hidden para que as outras não apareçam
+        hidePages.forEach(number => {
+          $(`.page${number}`).addClass('hidden');
+        });
 
-      const pagesToHide = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-      if (page >= 2 && page <= 11) {
-        pagesToHide.splice(page, 1);
+        // Remove o hidden da página para fazê-la aparecer:
+        $(`.page${showPage}`).removeClass('hidden');
       }
 
-      hideAndShow(page, pagesToHide);
-    }
+      function handlePageContent(page) {
+        $('.turn-page p').addClass('hidden');
 
-  });
+        const pagesToHide = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+        if (page >= 2 && page <= 11) {
+          pagesToHide.splice(page, 1);
+        }
+
+        hideAndShow(page, pagesToHide);
+      }
+
+    });
   </script>
 </body>
 </html>
