@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flip Book</title>
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="turn.min.js"></script>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+  }
+
+  #magazine {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+  }
+
+  .turn-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Times New Roman', serif;
+    font-size: 24px;
+    text-align: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+  }
+
+  .pageContent {
+    background-color: #eef3f5;
+    width: 100%;
+    height: 100%;
+  }
+
+  .turn-page p {
+    margin: 0;
+    padding: 25px;
+    text-align: justify;
+    font-size: 30px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  #capa {
+    background-image: url('imgs/capa.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .centerContent {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    vertical-align: center;
+  }
+
+  /* Estilos para o título do capítulo */
+  .page-title {
+    font-size: 48px !important;
+    font-weight: bold;
+    margin-bottom: 20px !important;
+  }
+
+  /* Estilos para o subtítulo do capítulo */
+  .page-subtitle {
+    font-size: 32px !important;
+    font-style: italic;
+    color: #555;
+  }
+
+</style>
+</head>
+<body>
+  <div id="magazine">
+    <div class="turn-page page1" id="capa"></div>
+
+    <div class="turn-page">
+      <div class="pageContent centerContent">
+        <p class="page-title page2 hidden" style="text-align: center !important;">Capítulo 1</p>
+        <p class="page-subtitle page2 hidden" style="text-align: center !important;">O Encontro</p>
+      </div>
+    </div>
+
+    <div class="turn-page">
+      <div class="pageContent centerContent">
+        <p class="page3 hidden">
+          Naquela quinta-feira, véspera de um aguardado feriado, 
+          eu pegava novamente o celular, em uma mistura de expectativa e cansaço para, 
+          pela enésima vez, verificar as mensagens no aplicativo de relacionamento.
+        </p>
+      </div>
+    </div>
+
+    <div class="turn-page">
+      <div class="pageContent centerContent">
+          <p class="page4 hidden">
+            Dentre poucas mensagens, me deparei com um simples "Oii" de uma remetente  incrivelmente bonita.
+            Meu coração deu um salto, e naquela véspera de feriado, algo mágico começou a se desenrolar. 
+          </p>
+      </div>
+    </div>
+
+    <div class="turn-page">
+      <div class="pageContent centerContent">
+        <p class="page5 hidden">
+          Semanas de conversas se passaram, até que finalmente, numa sexta-feira congelante, tive a oportunidade de conhecer pessoalmente a dona do sorriso que vinha dominando meus pensamentos.
+        </p>
+      </div>
+    </div>
+
+    <div class="turn-page">
+      <div class="pageContent centerContent">
+        <p class="page6 hidden">
+          E a noite passou de forma rápida, porém tranquila, porque foi assim que ela me fez sentir: calma, confortável e completamente cativada por cada palavra que escapava de seus lábios. As horas se arrastaram como se o tempo estivesse se esforçando para prolongar nosso encontro, permitindo-nos mergulhar mais profundamente em conversas que flutuavam entre risos e olhares cheios de promessas.
+        </p>
+      </div>
+    </div>
+
+    <div class="turn-page">
+      <div class="pageContent centerContent">
+        <p class="page7 hidden">
+          O frio lá fora foi esquecido, pois o calor da nossa conexão nos envolvia. Naquele instante, a sexta-feira congelante tornou-se um capítulo memorável, 
+          onde o amor começou a escrever sua história entre as páginas de nossas vidas.
+        </p>
+      </div>
+    </div>
+
+    <div class="turn-page">
+      <div class="pageContent centerContent">
+        <p class="page8 hidden">
+          Experimentei emoções que há muito tempo não vivenciava e, ao longo de cinco meses, tive a honra de compartilhar momentos inesquecíveis com uma mulher notavelmente inteligente, bonita, gentil, e detentora de tantas outras qualidades admiráveis
+        </p>
+      </div>
+    </div>
+
+    <div class="turn-page">
+      <div class="pageContent centerContent">
+        <p class="page9 hidden">
+          Mas chegou um momento onde perguntas começaram a ecoar em minha mente, afinal, o que somos? 
+          Será que ficante é o suficiente para abranger tudo o que compartilhamos? Será que é só esse pequeno espaço que ela deveria ocupar na minha vida? 
+        </p>
+      </div>
+    </div>
+
+    <div class="turn-page">
+      <div class="pageContent centerContent">
+        <p class="page10 hidden">
+          E a resposta é clara: não.
+        </p>
+      </div>
+    </div>
+
+    <div class="turn-page">
+      <div class="pageContent centerContent">
+        <p class="page-title page11 hidden" style="text-align: center !important;">Capítulo 2</p>
+        <p class="page-subtitle page11 hidden" style="text-align: center !important;">Futuro</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  $(document).ready(function () {
+    var magazine = $('#magazine');
+
+    magazine.turn({
+      display: 'single',
+      width: '100vw',
+      height: '100vh'
+    });
+
+    magazine.bind('turned', function (event, page, view) {
+      handlePageContent(page);
+    });
+
+    function hideAndShow(showPage, hidePages) {
+      // Adiciona hidden para que as outras não apareçam
+      hidePages.forEach(number => {
+        $(`.page${number}`).addClass('hidden');
+      });
+
+      // Remove o hidden da página para fazê-la aparecer:
+      $(`.page${showPage}`).removeClass('hidden');
+    }
+
+    function handlePageContent(page) {
+      $('.turn-page p').addClass('hidden');
+
+      const pagesToHide = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+      if (page >= 2 && page <= 11) {
+        pagesToHide.splice(page, 1);
+      }
+
+      hideAndShow(page, pagesToHide);
+    }
+
+  });
+  </script>
+</body>
+</html>
