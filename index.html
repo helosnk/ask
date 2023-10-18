@@ -178,7 +178,11 @@
       magazine.turn({
         display: 'single',
         width: '100vw',
-        height: '100vh'
+        height: '100vh',
+        duration: 300,
+        swipe: true,
+        direction: 'rtl',
+        turnCorners: 'br'
       });
 
       magazine.bind('turned', function (event, page, view) {
